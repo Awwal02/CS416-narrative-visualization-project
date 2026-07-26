@@ -172,8 +172,7 @@ window.drawResponsiveScatterChartAll = (
         window.continentSelected =
           e.target.textContent === "all" ? undefined : e.target.textContent;
       }
-      d3.select("#container").select("svg").remove();
-      d3.select("#brush-container").select("svg").remove();
+      clearSvg();
       createSvgMain();
       createSvgBrush();
       drawResponsiveScatterChartAll(
@@ -198,6 +197,8 @@ window.drawResponsiveScatterChartAll = (
         window.countrySelected,
         "brush-container",
       );
+      drawResponsiveBarChartCommon();
+      drawResponsiveBarChartCommon("bar-chart-container");
       // e.target.
       // e.target.classList.add("bkg-selected");
     });
