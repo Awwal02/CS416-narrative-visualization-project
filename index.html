@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDP/Life Expectancy Data Visualization</title>
+   <link rel="stylesheet" href="index.css">
+    <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+    <div id="header" class="center-align-buttons">
+        <h1>GDP/Life Expectancy Data Visualization</h1>
+    </div>
+    <div id="center-align-buttons" style="display: none">
+        <button id="back-button" disabled><</button>
+        <span >Home</span>
+        <button id="next-button">></button>
+    </div>
+    <div>
+        <select id="country-select"  style="display: none">
+            <option value="all">All Countries</option>
+        </select>
+        <select id="year-select" style="display: none">
+            <option value="all">All Years</option>
+        </select>
+        <div id="years" class="center-align-buttons"></div>
+        <!-- <select id="continent-select">
+            <option value="all">All Continents</option>
+        </select> -->
+    </div>
+    <div id="container"></div>
+    <div id="brush-container"></div>
+    <div class="center-align-buttons">
+        <div id="bar-chart-container"></div>
+        <div id="bar-chart-container-2"></div>
+    </div>
+    <div id="footer" class="center-align-buttons">
+        <p>© 2026 by Awwal Adarsh. All right reserved.</p>
+    </div>
+
+    <!-- Your website content goes here -->
+
+    <!-- Optional: Link your external JavaScript file -->
+     <script src="https://d3js.org/d3.v7.min.js"></script>
+     <!-- //add annotation js -->
+     <script src="https://unpkg.com/d3-svg-annotation@2.5.1/d3-annotation.min.js"></script>
+     <script src="addAnnotations.js"></script>
+     <script src="drawBarChart.js"></script>
+     <script src="drawScatterChart.js"></script>
+     <script src="index-charts.js"></script>  
+</body>
+</html>
