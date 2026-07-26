@@ -37,7 +37,7 @@ const drawResponsiveBarChartCommon = (type = "bar-chart-container-2") => {
     data.push({ continent: x, gdp: dataAggregated[x].avg });
   }
 
-  data.sort((x, y) => -x.gdp + y.gdp);
+  data.sort((x, y) => x.gdp - y.gdp);
 
   console.log(data);
 

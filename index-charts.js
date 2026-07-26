@@ -58,12 +58,34 @@ const changeState = (pressed) => {
   drawResponsiveBarChartCommon();
 };
 
-document
-  .getElementById("back-button")
-  .addEventListener("click", changeState.bind(this, "back"));
-document
-  .getElementById("next-button")
-  .addEventListener("click", changeState.bind(this, "next"));
+let NextPrevButtonsAction = (prev, e) => {
+  let btns = Array.from(document.querySelectorAll("#years button"));
+  let btn = btns.find((z) => z.getAttribute("val") === window.yearSelected);
+  btn.classList.remove("active");
+  window.yearSelected = prev
+    ? +window.yearSelected - 5
+    : +window.yearSelected + 5;
+  if (
+    (prev && window.yearSelected === 1952) ||
+    (!prev && window.yearSelected === 2007)
+  ) {
+    e.target.setAttribute("disabled", true);
+  }
+  window.yearSelected = window.yearSelected.toString();
+  btn = btns.find((z) => z.getAttribute("val") === window.yearSelected);
+  btn.classList.add("active");
+  document
+    .getElementById(prev ? "next-btn" : "prev-btn")
+    .removeAttribute("disabled");
+  changeState();
+};
+
+document.getElementById("prev-btn").addEventListener("click", (e) => {
+  NextPrevButtonsAction(true, e);
+});
+document.getElementById("next-btn").addEventListener("click", (e) => {
+  NextPrevButtonsAction(false, e);
+});
 
 const createYearDropDown = (data) => {
   const years = [...new Set(data.map((d) => d.year))].sort((a, b) => a - b);
@@ -88,6 +110,16 @@ const createYearDropDown = (data) => {
   buttons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       window.yearSelected = btn.getAttribute("val");
+      if (window.yearSelected === "1952") {
+        document.getElementById("prev-btn").setAttribute("disabled", true);
+      } else {
+        document.getElementById("prev-btn").removeAttribute("disabled");
+      }
+      if (window.yearSelected === "2007") {
+        document.getElementById("next-btn").setAttribute("disabled", true);
+      } else {
+        document.getElementById("next-btn").removeAttribute("disabled");
+      }
       buttons.forEach((z) => (z.className = "style-button"));
       console.log(window.yearSelected);
       btn.className = "style-button active";

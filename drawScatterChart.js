@@ -165,6 +165,8 @@ window.drawResponsiveScatterChartAll = (
       window.continentSelected === d ? "opacity-1" : "opacity-5",
     )
     .on("click", function (e) {
+      delete window.startBound;
+      delete window.endBound;
       legendItems.selectAll("text").classed("opacity-1 opacity-5", false);
       if (window.continentSelected === e.target.textContent) {
         window.continentSelected = undefined;
@@ -172,33 +174,7 @@ window.drawResponsiveScatterChartAll = (
         window.continentSelected =
           e.target.textContent === "all" ? undefined : e.target.textContent;
       }
-      clearSvg();
-      createSvgMain();
-      createSvgBrush();
-      drawResponsiveScatterChartAll(
-        window.svg,
-        window.chartGroup,
-        window.container,
-        window.xScale,
-        window.yScale,
-        window.xAxisGroup,
-        window.yAxisGroup,
-        window.countrySelected,
-        "container",
-      );
-      drawResponsiveScatterChartAll(
-        window.svg2,
-        window.chartGroup2,
-        window.container2,
-        window.xScale2,
-        window.yScale2,
-        window.xAxisGroup2,
-        window.yAxisGroup2,
-        window.countrySelected,
-        "brush-container",
-      );
-      drawResponsiveBarChartCommon();
-      drawResponsiveBarChartCommon("bar-chart-container");
+      changeState();
       // e.target.
       // e.target.classList.add("bkg-selected");
     });
