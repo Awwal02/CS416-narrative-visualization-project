@@ -113,7 +113,7 @@ const drawResponsiveBarChartCommon = (type = "bar-chart-container-2") => {
     .on("mousemove", function (event, d) {
       tooltip
         .html(
-          `Continent: <strong>${d.continent}</strong><br>Avg GDP: <strong>${d.gdp.toFixed(2)}</strong>`,
+          `Continent: <strong>${d.continent}</strong><br>${type.includes("-2") ? "Avg GDP" : "Avg Life expectancy"}: <strong>${d.gdp.toFixed(2)}</strong>`,
         )
         .style("top", event.pageY - 10 + "px")
         .style("left", event.pageX + 10 + "px");
@@ -164,5 +164,7 @@ const drawResponsiveBarChartCommon = (type = "bar-chart-container-2") => {
       "transform",
       `translate(${width / 2 + margin.left}, ${height + margin.top + 30})`,
     )
-    .text("Average GDP per cap");
+    .text(
+      type.includes("-2") ? "Average GDP per cap" : "Average Life Expectancy",
+    );
 };
