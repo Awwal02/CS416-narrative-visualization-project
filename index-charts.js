@@ -123,7 +123,7 @@ const createYearDropDown = (data) => {
       buttons.forEach((z) => (z.className = "style-button"));
       console.log(window.yearSelected);
       btn.className = "style-button active";
-      delete window.continentSelected;
+      // delete window.continentSelected;
       delete window.startBound;
       delete window.endBound;
       changeState();
