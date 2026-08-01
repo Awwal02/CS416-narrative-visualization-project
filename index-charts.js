@@ -148,9 +148,16 @@ const clearSvg = () => {
 };
 
 const createCountriesDropdown = (data) => {
-  const countries = [...new Set(data.map((d) => d.country))];
+  let countries = [
+    ...new Set(
+      data
+        .filter((z) => z.continent === window.continentSelected)
+        .map((d) => d.country),
+    ),
+  ];
+  // ÷countries = countries.filter((z) => z.continent === window.continentSelected);
   const countryDropdown = document.querySelector("#country-select");
-
+  countryDropdown.innerHTML = `<option value="">Select country</option>`;
   countries.forEach((country) => {
     const option = document.createElement("option");
     option.value = country;

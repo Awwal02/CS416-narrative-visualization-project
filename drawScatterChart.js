@@ -165,15 +165,22 @@ window.drawResponsiveScatterChartAll = (
       window.continentSelected === d ? "opacity-1" : "opacity-5",
     )
     .on("click", function (e) {
+      console.log(e);
       delete window.startBound;
       delete window.endBound;
+      const countryDropdown = d3.select("#country-select");
+
       legendItems.selectAll("text").classed("opacity-1 opacity-5", false);
       if (window.continentSelected === e.target.textContent) {
         window.continentSelected = undefined;
+        countryDropdown.style("display", "none");
+        delete window.countrySelected;
       } else {
+        countryDropdown.style("display", "block");
         window.continentSelected =
           e.target.textContent === "all" ? undefined : e.target.textContent;
       }
+      createCountriesDropdown(window.data);
       changeState();
       // e.target.
       // e.target.classList.add("bkg-selected");
