@@ -128,7 +128,7 @@ window.drawResponsiveScatterChartAll = (
       )
       .text("GDP per Capita(log scale)");
 
-  if (!countrySelected) {
+  if (!countrySelected && !window.continentSelected && !window.startBound) {
     !isBrush && addAnnotations();
   } else {
     d3.select("svg").selectAll(".annotation-group").remove();
