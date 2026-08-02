@@ -162,7 +162,11 @@ window.drawResponsiveScatterChartAll = (
     .attr("style", "cursor: pointer;")
     .attr("fill", (d) => colorScale(d))
     .attr("class", (d) =>
-      window.continentSelected === d ? "opacity-1" : "opacity-5",
+      window.continentSelected === d
+        ? "opacity-1"
+        : window.continentSelected
+          ? "opacity-5"
+          : "",
     )
     .on("click", function (e) {
       console.log(e);
