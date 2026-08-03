@@ -294,32 +294,32 @@ const createSvgBrush = async () => {
 };
 
 // update chart when window is resized
-window.addEventListener("resize", () => {
-  if (window.svg && window.chartGroup) {
-    drawResponsiveScatterChartAll(
-      window.svg,
-      window.chartGroup,
-      window.container,
-      window.xScale,
-      window.yScale,
-      window.xAxisGroup,
-      window.yAxisGroup,
-      window.countrySelected,
-      "container",
-    );
-    drawResponsiveScatterChartAll(
-      window.svg2,
-      window.chartGroup2,
-      window.container2,
-      window.xScale2,
-      window.yScale2,
-      window.xAxisGroup2,
-      window.yAxisGroup2,
-      window.countrySelected,
-      "brush-container",
-    );
-  }
-});
+// window.addEventListener("resize", () => {
+//   if (window.svg && window.chartGroup) {
+//     drawResponsiveScatterChartAll(
+//       window.svg,
+//       window.chartGroup,
+//       window.container,
+//       window.xScale,
+//       window.yScale,
+//       window.xAxisGroup,
+//       window.yAxisGroup,
+//       window.countrySelected,
+//       "container",
+//     );
+//     drawResponsiveScatterChartAll(
+//       window.svg2,
+//       window.chartGroup2,
+//       window.container2,
+//       window.xScale2,
+//       window.yScale2,
+//       window.xAxisGroup2,
+//       window.yAxisGroup2,
+//       window.countrySelected,
+//       "brush-container",
+//     );
+//   }
+// });
 
 const start = async () => {
   isInitialLoad = false;
